@@ -1,0 +1,6 @@
+/chef/cookbooks/
+/chef/tmp/
+/packer_cache/
+/build/
+/output-*/
+/lamp-vagrant-chef-solo.box

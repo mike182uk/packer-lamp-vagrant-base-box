@@ -1,0 +1,103 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu_64",
+            "headless": false,
+            "http_directory": "http",
+            "boot_wait": "8s",
+            "disk_size": 40960,
+            "virtualbox_version_file": ".vbox_version",
+            "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+
+            "name": "lamp-vagrant-chef-solo",
+
+            "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.4-server-amd64.iso",
+            "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
+            "iso_checksum_type": "md5",
+
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "20m",
+
+            "boot_command": [
+              "<esc><esc><enter><wait>",
+              "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+              "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+              "hostname={{ .Name }} ",
+              "fb=false debconf/frontend=noninteractive ",
+              "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+              "initrd=/install/initrd.gz -- <enter>"
+            ],
+            "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+
+            "vboxmanage": [
+              ["modifyvm", "{{.Name}}", "--memory", "512"],
+              ["modifyvm", "{{.Name}}", "--cpus", "1"]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/vagrant.sh",
+                "scripts/ssh.sh",
+                "scripts/virtualbox.sh"
+            ],
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
+        },
+        {
+            "type": "chef-solo",
+            "cookbook_paths": [
+                "chef/cookbooks",
+                "chef/site-cookbooks"
+            ],
+            "run_list": [
+                "apt",
+                "git",
+                "vim",
+                "apache2",
+                "apache2::mod_rewrite",
+                "apache2::mod_alias",
+                "mysql::server",
+                "mysql::remote-access",
+                "php",
+                "php::module_mysql",
+                "php::module_apc",
+                "php::module_curl",
+                "xdebug",
+                "apache2::mod_php5",
+                "composer"
+            ],
+            "json": {
+                "mysql": {
+                    "server_root_password": "root",
+                    "server_debian_password": "root",
+                    "server_repl_password": "root",
+                    "mysql_bin": "/usr/bin/mysql",
+                    "bind_address": "0.0.0.0"
+                },
+                "xdebug": {
+                    "remote_enable": 1,
+                    "remote_connect_back": 1
+                }
+            }
+        },
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/cleanup.sh"
+            ],
+            "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "keep_input_artifact": true,
+            "output": "lamp-vagrant-chef-solo.box"
+        }
+    ]
+}
