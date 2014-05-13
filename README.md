@@ -27,6 +27,7 @@ Packer project for building a LAMP development base box for use with vagrant
     - [Bundler](http://bundler.io/)
 
 - [Virtualbox](https://www.virtualbox.org/)
+- [Packer](http://www.packer.io/)
 
 ##Usage
 
@@ -36,7 +37,7 @@ Install required Ruby Gems:
 bundle install
 ```
 
-Install required chef cookbooks:
+Install required Chef cookbooks:
 
 ```bash
 cd chef && librarian-chef install
@@ -48,10 +49,12 @@ Build the box:
 cd ../ && packer build lamp-vagrant-chef-solo.json
 ```
 
-Once packer has built the box there will be a vagrant box file (`packer-lamp-vagrant-chef-solo.box`) in build directory.
+Once packer has built the box there will be a vagrant box file (`packer-lamp-vagrant-chef-solo.box`) in the build directory.
 
 You can also test the box in virtualbox using the build artifacts in `output-lamp-vagrant-chef-solo` (import `packer-lamp-vagrant-chef-solo.ovf` into virtualbox).
 
 ## FAQ's
 
 ## Notes
+
+- The MySQL root user password is set to `root`
