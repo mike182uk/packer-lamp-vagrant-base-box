@@ -68,6 +68,7 @@
                 "php::module_gd",
                 "php::module_mcrypt",
                 "php::module_mysql",
+                "php::apache2",
                 "xdebug",
                 "composer"
             ],
