@@ -22,13 +22,13 @@
             "ssh_wait_timeout": "20m",
 
             "boot_command": [
-              "<esc><esc><enter><wait>",
-              "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-              "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-              "hostname={{ .Name }} ",
-              "fb=false debconf/frontend=noninteractive ",
-              "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-              "initrd=/install/initrd.gz -- <enter>"
+                "<esc><esc><enter><wait>",
+                "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+                "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+                "hostname={{ .Name }} ",
+                "fb=false debconf/frontend=noninteractive ",
+                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+                "initrd=/install/initrd.gz -- <enter>"
             ],
             "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
 
@@ -61,27 +61,22 @@
                 "apache2",
                 "apache2::mod_rewrite",
                 "apache2::mod_alias",
+                "apache2::mod_php5",
                 "mysql::server",
-                "mysql::remote-access",
                 "php",
-                "php::module_mysql",
                 "php::module_apc",
                 "php::module_curl",
+                "php::module_gd",
+                "php::module_mcrypt",
+                "php::module_mysql",
                 "xdebug",
-                "apache2::mod_php5",
                 "composer"
             ],
             "json": {
                 "mysql": {
                     "server_root_password": "root",
                     "server_debian_password": "root",
-                    "server_repl_password": "root",
-                    "mysql_bin": "/usr/bin/mysql",
-                    "bind_address": "0.0.0.0"
-                },
-                "xdebug": {
-                    "remote_enable": 1,
-                    "remote_connect_back": 1
+                    "server_repl_password": "root"
                 }
             }
         },
@@ -97,7 +92,7 @@
         {
             "type": "vagrant",
             "keep_input_artifact": true,
-            "output": "lamp-vagrant-chef-solo.box"
+            "output": "build/lamp-vagrant-chef-solo.box"
         }
     ]
 }
