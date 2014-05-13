@@ -51,8 +51,7 @@
         {
             "type": "chef-solo",
             "cookbook_paths": [
-                "chef/cookbooks",
-                "chef/site-cookbooks"
+                "chef/cookbooks"
             ],
             "run_list": [
                 "apt",
