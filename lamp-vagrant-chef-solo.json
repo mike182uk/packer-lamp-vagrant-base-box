@@ -51,6 +51,7 @@
         {
             "type": "chef-solo",
             "cookbook_paths": [
+                "chef/vendor-cookbooks",
                 "chef/cookbooks"
             ],
             "run_list": [
@@ -61,7 +62,7 @@
                 "apache2::mod_rewrite",
                 "apache2::mod_alias",
                 "apache2::mod_php5",
-                "mysql::server",
+                "base::mysql",
                 "php",
                 "php::module_apc",
                 "php::module_curl",
@@ -73,10 +74,8 @@
                 "composer"
             ],
             "json": {
-                "mysql": {
-                    "server_root_password": "root",
-                    "server_debian_password": "root",
-                    "server_repl_password": "root"
+                "xdebug": {
+                    "config_file": "/etc/php5/conf.d/xdebug.ini"
                 }
             }
         },
