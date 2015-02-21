@@ -1,5 +1,4 @@
-/chef/cookbooks/
-/chef/tmp/
+/chef/vendor-cookbooks/
 /packer_cache/
 /build/
 /output-*/
