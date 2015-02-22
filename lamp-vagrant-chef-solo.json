@@ -56,7 +56,6 @@
             ],
             "run_list": [
                 "apt",
-                "git",
                 "vim",
                 "apache2",
                 "apache2::mod_rewrite",
@@ -70,8 +69,7 @@
                 "php::module_mcrypt",
                 "php::module_mysql",
                 "php::apache2",
-                "xdebug",
-                "composer"
+                "xdebug"
             ],
             "json": {
                 "xdebug": {

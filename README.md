@@ -16,9 +16,7 @@ Packer project for building a LAMP development base box for use with vagrant
     - mod_alias
     - mod_php5
 - Miscellaneous packages installed:
-    - git
     - vim
-- Composer installed
 
 ##Prerequisites
 
