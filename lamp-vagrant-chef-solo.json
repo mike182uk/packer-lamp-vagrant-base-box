@@ -73,7 +73,8 @@
             ],
             "json": {
                 "xdebug": {
-                    "config_file": "/etc/php5/conf.d/xdebug.ini"
+                    "config_file": "/etc/php5/conf.d/xdebug.ini",
+                    "version": "2.2.7"
                 }
             }
         },
