@@ -12,8 +12,8 @@
 
             "name": "lamp-vagrant-chef-solo",
 
-            "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.4-server-amd64.iso",
-            "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
+            "iso_url": "http://releases.ubuntu.com/trusty/ubuntu-14.04.2-server-amd64.iso",
+            "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
             "iso_checksum_type": "md5",
 
             "ssh_username": "vagrant",
@@ -63,18 +63,19 @@
                 "apache2::mod_php5",
                 "base::mysql",
                 "php",
-                "php::module_apc",
                 "php::module_curl",
                 "php::module_gd",
                 "php::module_mcrypt",
                 "php::module_mysql",
                 "php::apache2",
-                "xdebug"
+                "base::xdebug"
             ],
             "json": {
+                "php": {
+                  "ext_conf_dir": "/etc/php5/mods-available"
+                },
                 "xdebug": {
-                    "config_file": "/etc/php5/conf.d/xdebug.ini",
-                    "version": "2.2.7"
+                    "config_file": "/etc/php5/mods-available/xdebug.ini"
                 }
             }
         },
