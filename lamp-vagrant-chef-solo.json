@@ -12,8 +12,8 @@
 
             "name": "lamp-vagrant-chef-solo",
 
-            "iso_url": "http://releases.ubuntu.com/trusty/ubuntu-14.04.2-server-amd64.iso",
-            "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
+            "iso_url": "http://releases.ubuntu.com/trusty/ubuntu-14.04.3-server-amd64.iso",
+            "iso_checksum": "9e5fecc94b3925bededed0fdca1bd417",
             "iso_checksum_type": "md5",
 
             "ssh_username": "vagrant",
@@ -33,7 +33,7 @@
             "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
 
             "vboxmanage": [
-              ["modifyvm", "{{.Name}}", "--memory", "512"],
+              ["modifyvm", "{{.Name}}", "--memory", "1024"],
               ["modifyvm", "{{.Name}}", "--cpus", "1"]
             ]
         }

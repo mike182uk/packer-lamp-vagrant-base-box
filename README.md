@@ -1,6 +1,6 @@
 Packer project for building a LAMP development base box for use with vagrant
 
-- Ubuntu 14.04.2 (LTS)
+- Ubuntu 14.04.3 (LTS)
 - Chef installed (latest version at time of build)
 - Virtualbox guest additions installed (latest version at time of build)
 - Apache (2.4), MySQL (5.6) & PHP (5.5) installed
