@@ -1,3 +1,5 @@
+#### ⚠️ This project is no longer maintained
+
 Packer project for building a LAMP development base box for use with vagrant
 
 - Ubuntu 14.04.3 (LTS)
@@ -17,13 +19,13 @@ Packer project for building a LAMP development base box for use with vagrant
 - Miscellaneous packages installed:
     - vim
 
-##Prerequisites
+## Prerequisites
 
 - [Chef Development Kit](https://downloads.chef.io/chef-dk/)
 - [Virtualbox](https://www.virtualbox.org/)
 - [Packer](http://www.packer.io/)
 
-##Usage
+## Usage
 
 Install required cookbooks:
 
@@ -41,9 +43,9 @@ Once packer has built the box there will be a vagrant box file (`packer-lamp-vag
 
 You can also test the box in virtualbox using the build artifacts in the `output-lamp-vagrant-chef-solo` directory (import `packer-lamp-vagrant-chef-solo.ovf` into virtualbox).
 
-##FAQ's
+## FAQ's
 
-##Notes
+## Notes
 
 - The MySQL root user password is set to `root`
 - To login into MySQL from the command line you will need to specify the host:
